@@ -166,7 +166,7 @@ class Example(Orderable, ClusterableModel, CommonControlField):
     base_form_class = CoreAdminModelForm
 
 
-class SPSBase(ClusterableModel, CommonControlField):
+class SPSBase(Page, ClusterableModel):
     name = models.CharField(_("Name"), max_length=256, null=False, blank=False)
     description = RichTextField(_("Description"), null=True, blank=True)
     # versions
@@ -215,7 +215,6 @@ class SPSBase(ClusterableModel, CommonControlField):
             ObjectList(panels_note_block, heading=_("Note blocks")),
         ]
     )
-    base_form_class = CoreAdminModelForm
 
 
 class SPSElement(SPSBase):
@@ -317,7 +316,6 @@ class SPSAttribute(SPSBase):
             ObjectList(panels_note_block, heading=_("Note blocks")),
         ]
     )
-    base_form_class = CoreAdminModelForm
 
 
 class AttributeValue(Orderable, ClusterableModel, CommonControlField):
