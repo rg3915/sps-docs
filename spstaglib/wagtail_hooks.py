@@ -8,12 +8,7 @@ from wagtail.contrib.modeladmin.options import (
 )
 from wagtail.contrib.modeladmin.views import CreateView, EditView
 
-from spstaglib.models import (
-    SPSVersion,
-    OccurrenceNumber,
-    SPSElement,
-    SPSAttribute,
-)
+from spstaglib.models import OccurrenceNumber, SPSAttribute, SPSElement, SPSVersion
 
 
 class SPSVersionCreateView(CreateView):

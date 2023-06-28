@@ -2,20 +2,14 @@ from django.db import models
 from django.utils.translation import gettext as _
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.models import Orderable
-from wagtailautocomplete.edit_handlers import AutocompletePanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, ObjectList, TabbedInterface
 from wagtail.blocks import TextBlock
-from wagtail.fields import StreamField, RichTextField
-from wagtail.models import Page
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    ObjectList,
-    TabbedInterface,
-)
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Orderable, Page
+from wagtailautocomplete.edit_handlers import AutocompletePanel
 
-from core.models import CommonControlField
 from core.forms import CoreAdminModelForm
+from core.models import CommonControlField
 
 
 class SPSVersion(ClusterableModel, CommonControlField):
@@ -229,7 +223,7 @@ class SPSElement(SPSBase):
     (!+) Nota
     """
 
-    attributes = models.ManyToManyField('SPSAttribute')
+    attributes = models.ManyToManyField("SPSAttribute")
 
     class Meta:
         verbose_name = _("Element")
@@ -324,7 +318,7 @@ class SPSAttribute(SPSBase):
 
 class AttributeValue(Orderable, ClusterableModel, CommonControlField):
     parent = ParentalKey(
-        'SPSAttribute', on_delete=models.CASCADE, related_name="attribute_value"
+        "SPSAttribute", on_delete=models.CASCADE, related_name="attribute_value"
     )
     value = models.CharField(_("Value"), max_length=256, null=False, blank=False)
     description = RichTextField(_("Description"), null=True, blank=True)
