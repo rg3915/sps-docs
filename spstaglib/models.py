@@ -241,6 +241,8 @@ class SPSElement(SPSBase):
     panels_main = [
         FieldPanel("name"),
         FieldPanel("description"),
+        FieldPanel("title"),
+        FieldPanel("slug"),
     ]
     panels_presence = [
         InlinePanel("presence", label=_("Presence"), classname="collapsed"),
@@ -293,6 +295,8 @@ class SPSAttribute(SPSBase):
     panels_main = [
         FieldPanel("name"),
         FieldPanel("description"),
+        FieldPanel("title"),
+        FieldPanel("slug"),
     ]
     panels_presence = [
         InlinePanel("presence", label=_("Presence"), classname="collapsed"),
